@@ -1,4 +1,5 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
+const flowbite = require('flowbite/plugin');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: [
@@ -22,6 +23,7 @@ module.exports = {
     },
   },
   plugins: [
-    require('flowbite/plugin')
+    flowbite,
+    // ...
   ],
 };
