@@ -8,12 +8,17 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { prompt } = req.query;
+
+  // Validate prompt
+  if (!prompt || typeof prompt !== 'string' || prompt.length === 0) {
+    return res.status(400).json({ error: 'Prompt is required and must be a non-empty string.' });
+  }
+
   try {
     const response = await fetch(`${QSTASH + DALL_E}`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${process.env.QSTASH_TOKEN}`,
-        // Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
         "upstash-forward-Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
         "Content-Type": "application/json",
         "Upstash-Callback": `${VERCEL_URL}/api/callback`,
@@ -26,10 +31,13 @@ export default async function handler(
       }),
     });
     const json = await response.json();
+    if (!json.messageId) {
+      throw new Error('Invalid response from image generation API.');
+    }
     return res.status(202).json({ id: json.messageId });
   } catch (error) {
     return res
       .status(500)
-      .json({ message: error.message, type: "Internal server error" });
+      .json({ message: 'Failed to generate image.', type: "Internal server error" });
   }
 }

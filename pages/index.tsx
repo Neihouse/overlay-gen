@@ -8,25 +8,26 @@ interface ImageData {
 const Home: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>('');
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setInputValue(e.target.value);
-  };
+  // Remove unused variables
+  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  //   setInputValue(e.target.value);
+  // };
 
-  const handleGenerateClick = async (): Promise<void> => {
-    try {
-      const response = await fetch('/api/image', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ prompt: inputValue }),
-      });
-      const data = await response.json() as ImageData;
-      console.log('Generated image data:', data);
-    } catch (error) {
-      console.error('Error generating image:', error);
-    }
-  };
+  // const handleGenerateClick = async (): Promise<void> => {
+  //   try {
+  //     const response = await fetch('/api/image', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ prompt: inputValue }),
+  //     });
+  //     const data = await response.json() as ImageData;
+  //     console.log('Generated image data:', data);
+  //   } catch (error) {
+  //     console.error('Error generating image:', error);
+  //   }
+  // };
 
   return (
     <>

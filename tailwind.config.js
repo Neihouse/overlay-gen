@@ -20,6 +20,11 @@ module.exports = {
           },
         },
       },
+      colors: {
+        pigmentIndigo: '#4A0072',
+        navyBlue: '#120078',
+        // Add other custom colors here
+      },
     },
   },
   plugins: [

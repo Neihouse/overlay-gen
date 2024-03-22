@@ -7,9 +7,13 @@ type Options = {
 };
 
 export default function rateLimit(options?: Options) {
+  // Dynamic configuration with environment variables
+  const uniqueTokens = parseInt(process.env.RATE_LIMIT_UNIQUE_TOKENS || '100', 10);
+  const rateLimitInterval = parseInt(process.env.RATE_LIMIT_INTERVAL_MS || '60000', 10);
+
   const tokenCache = new LRU({
-    max: options?.uniqueTokenPerInterval || 500,
-    ttl: options?.interval || 60000,
+    max: options?.uniqueTokenPerInterval || uniqueTokens,
+    ttl: options?.interval || rateLimitInterval,
   });
 
   return {
