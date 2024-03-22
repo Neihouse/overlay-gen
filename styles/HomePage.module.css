@@ -1,0 +1,52 @@
+/* HomePage.module.css */
+.navbar {
+  padding: 1rem;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #DDD;
+}
+
+.main {
+  padding: 2rem;
+  text-align: center;
+  background-color: #FFD700; /* Gold background */
+}
+
+.title {
+  color: #4A0072; /* Pigment Indigo */
+}
+
+.description {
+  color: #120078; /* Navy Blue */
+}
+
+.searchWrapper {
+  margin: 1rem 0;
+}
+
+.searchInput {
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #DDD;
+}
+
+.generateButton {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #4A0072; /* Pigment Indigo */
+  color: #FFFFFF;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer {
+  padding: 1rem;
+  background-color: #FFFFFF;
+  border-top: 1px solid #DDD;
+  text-align: center;
+}
